@@ -25,5 +25,5 @@ import BackgroundImage from '@oubli/react-background-image'
 export default () => <BackgroundImage url={"YOUR_PICTURE_URL"} alt={"YOUR_CUSTOM_ALT"}
 ```
 
-##Tips 
+## Tips 
 The parent container should have a defined height and width, if this is not likely to cause problems.
