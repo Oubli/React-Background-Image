@@ -29,7 +29,7 @@ export default () => <BackgroundImage url={"YOUR_PICTURE_URL"} alt={"YOUR_CUSTOM
 | Name          | Default       | Description  |
 | ------------- |:-------------:| ------------:|
 | url           | null          | The url of the resource you want to load |
-| alt           | 'BackgroundImage      | Alternative text to the image for correct accessibility |
+| alt           | "BackgroundImage"      | Alternative text to the image for correct accessibility |
 
 ## Tips 
 The parent container should have a defined height and width, if this is not likely to cause problems.
