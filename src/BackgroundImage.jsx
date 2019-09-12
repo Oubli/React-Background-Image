@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './BackgroundImage.css';
+import './BackgroundImage.scss';
 
 const COVER = 'cover';
 const CONTAIN = 'contain';
