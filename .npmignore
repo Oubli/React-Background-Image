@@ -2,3 +2,6 @@ src
 demo
 .babelrc
 webpack.config.js
+.idea
+_config.yml
+yarn.lock
