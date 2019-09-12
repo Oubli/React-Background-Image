@@ -25,5 +25,14 @@ import BackgroundImage from '@oubli/react-background-image'
 export default () => <BackgroundImage url={"YOUR_PICTURE_URL"} alt={"YOUR_CUSTOM_ALT"}
 ```
 
+
+# Propiedades
+| Name          | Default       | Description  |
+| ------------- |:-------------:| ------------:|
+| url           | null          | La url del recurso que se desea cargar |
+| alt           | "BackgroundImage"      | Texto alternativo a la imagen para una correcta accesibilidad |
+| backgroundSize| "Cover"       | Se puede seleccionar dos modos de comportamiento para la imagen de fondo que funcionan igual que css, cover o contain |
+
+
 ## A tener en cuenta
 El contenedor padre deberá tener una altura y anchura definida, si no pueda causar problemas.
