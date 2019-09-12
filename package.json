@@ -1,7 +1,7 @@
 {
   "author": "Oubli Corp",
   "name": "@oubli/react-background-image",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Background Image Component for npm package",
   "main": "./lib/BackgroundImage.js",
   "license": "MIT",
@@ -9,9 +9,9 @@
     "build": "webpack"
   },
   "peerDependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -20,12 +20,14 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^3.2.0",
+    "node-sass": "^4.12.0",
     "path": "^0.12.7",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
-    "webpack": "^4.5.0",
+    "webpack": "^4.39.3",
     "webpack-cli": "^3.2.1"
   }
 }

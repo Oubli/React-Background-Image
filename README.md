@@ -30,6 +30,7 @@ export default () => <BackgroundImage url={"YOUR_PICTURE_URL"} alt={"YOUR_CUSTOM
 | ------------- |:-------------:| ------------:|
 | url           | null          | The url of the resource you want to load |
 | alt           | "BackgroundImage"      | Alternative text to the image for correct accessibility |
+| backgroundSize| "Cover"       | You can select two modes of background image behavior that work the same as css, cover or contain |
 
 ## Tips 
 The parent container should have a defined height and width, if this is not likely to cause problems.
