@@ -2,21 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BackgroundImage.css';
 
+const COVER = 'cover';
+const CONTAIN = 'contain';
+
+
+BackgroundImage.defaultProps = {
+    alt: 'BackgroundImage',
+    backgroundSize: COVER,
+};
+
+BackgroundImage.propTypes = {
+    url: PropTypes.string.required,
+    alt: PropTypes.string,
+    backgroundSize: PropTypes.oneOf([COVER,CONTAIN])
+};
+
 export default class BackgroundImage extends React.PureComponent {
 
     backgroundImage = null;
     parentNode = null;
-
     state = { maxWidth: null };
-
-    static defaultProps = {
-        alt: 'BackgroundImage',
-    };
-
-    static propTypes = {
-        url: PropTypes.string.required,
-        alt: PropTypes.string,
-    };
 
     componentDidMount() {
         this.setParentNode();
@@ -43,14 +48,15 @@ export default class BackgroundImage extends React.PureComponent {
     };
 
     updateDimensions = () => {
+        const {backgroundSize} = this.props;
         const imageHeight = this.backgroundImage.height;
         const imageWidth = this.backgroundImage.width;
         const parentHeight = this.parentNode.clientHeight;
         const parentWidth = this.parentNode.clientWidth;
 
         if (!(parentWidth <= imageWidth && parentHeight <= imageHeight)) {
-            if (parentHeight <= imageHeight) this.setState({maxWidth: true});
-            else if (parentWidth <= imageWidth) this.setState({maxWidth: false});
+            if (parentHeight <= imageHeight) this.setState({maxWidth: backgroundSize === COVER});
+            else if (parentWidth <= imageWidth) this.setState({maxWidth: backgroundSize !== COVER});
         }
     };
 
