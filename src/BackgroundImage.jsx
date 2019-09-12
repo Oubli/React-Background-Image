@@ -5,20 +5,7 @@ import './BackgroundImage.scss';
 const COVER = 'cover';
 const CONTAIN = 'contain';
 
-
-BackgroundImage.defaultProps = {
-    alt: 'BackgroundImage',
-    backgroundSize: COVER,
-};
-
-BackgroundImage.propTypes = {
-    url: PropTypes.string.required,
-    alt: PropTypes.string,
-    backgroundSize: PropTypes.oneOf([COVER,CONTAIN])
-};
-
-export default class BackgroundImage extends React.PureComponent {
-
+class BackgroundImage extends React.PureComponent {
     backgroundImage = null;
     parentNode = null;
     state = { maxWidth: null };
@@ -62,7 +49,7 @@ export default class BackgroundImage extends React.PureComponent {
 
     render(){
         const { maxWidth } = this.state;
-        const { url, alt, ...rest } = this.props;
+        const { url, alt, backgroundSize,...rest } = this.props;
         let { className } = this.props;
         className = className || '';
         return(
@@ -78,3 +65,17 @@ export default class BackgroundImage extends React.PureComponent {
         )
     }
 }
+
+
+BackgroundImage.defaultProps = {
+    alt: 'BackgroundImage',
+    backgroundSize: COVER,
+};
+
+BackgroundImage.propTypes = {
+    url: PropTypes.string.required,
+    alt: PropTypes.string,
+    backgroundSize: PropTypes.oneOf([COVER,CONTAIN])
+};
+
+export default BackgroundImage;
