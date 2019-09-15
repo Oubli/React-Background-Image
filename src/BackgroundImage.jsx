@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeConsumer } from '@oubli/react-theme'
 import './BackgroundImage.scss';
 
 const COVER = 'cover';
@@ -8,7 +9,7 @@ const CONTAIN = 'contain';
 class BackgroundImage extends React.PureComponent {
     backgroundImage = null;
     parentNode = null;
-    state = { maxWidth: null };
+    state = {maxWidth: null};
 
     componentDidMount() {
         this.setParentNode();
@@ -16,10 +17,12 @@ class BackgroundImage extends React.PureComponent {
         window.addEventListener("resize", this.updateDimensions);
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.url !== this.props.url )
+    componentDidUpdate(prevProps) {
+        if (prevProps.url !== this.props.url)
             this.updateDimensions()
     }
+
+
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
@@ -35,7 +38,7 @@ class BackgroundImage extends React.PureComponent {
     };
 
     updateDimensions = () => {
-        const {backgroundSize} = this.props;
+        const { backgroundSize } = this.props;
         const imageHeight = this.backgroundImage.height;
         const imageWidth = this.backgroundImage.width;
         const parentHeight = this.parentNode.clientHeight;
@@ -47,9 +50,15 @@ class BackgroundImage extends React.PureComponent {
         }
     };
 
-    render(){
+    handleErrorOnSrc = (e) => {
+        const { oubliTheme } = this.props;
+        e.target.onerror = null;
+        e.target.src= oubliTheme.errorImage
+    };
+
+    render() {
         const { maxWidth } = this.state;
-        const { url, alt, backgroundSize,...rest } = this.props;
+        const { url, alt, backgroundSize, oubliTheme, ...rest } = this.props;
         let { className } = this.props;
         className = className || '';
         return(
@@ -60,6 +69,7 @@ class BackgroundImage extends React.PureComponent {
                     src={ url }
                     alt={ alt }
                     onLoad={this.updateDimensions}
+                    onError={this.handleErrorOnSrc}
                 />
             </div>
         )
@@ -78,4 +88,4 @@ BackgroundImage.propTypes = {
     backgroundSize: PropTypes.oneOf([COVER,CONTAIN])
 };
 
-export default BackgroundImage;
+export default ThemeConsumer(BackgroundImage);
